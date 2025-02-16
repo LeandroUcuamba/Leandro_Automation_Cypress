@@ -1,33 +1,33 @@
+/// <reference types="cypress" />
+
+require('cypress-xpath');
+
 describe('Login', () => {
-  it('Realizar login com sucesso', () => {
+
+  it('Sign-up for an account successfully', () => {
      // Arrange
-     cy.visit('https://www.saucedemo.com/')
+     cy.visit('http://www.juliodelima.com.br/taskit/');
+
+     const numeroAleatorio = Math.random().toString(36).substring(2, 9);
 
      // Act
-     cy.get('[data-test="username"]').type('standard_user');
-     cy.get('[data-test="password"]').type('secret_sauce');
-     cy.get('[data-test="login-button"]').click();
+     cy.get('#signup').click();
+     cy.get('#name-sign-up').type('Leandro Ucuamba');
+     cy.get('#login-sign-up').type(`User_${numeroAleatorio}`);
+     cy.get('#password-sign-up').type('testArrop');
+     cy.get('#btn-submit-sign-up').click();
 
      // Assert
-     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html');
+     cy.get('body > div.container > div > div > p:nth-child(2)')
+        .should(
+            "contain.text",
+            "You are now registered and can add tasks you want to do in the distant future."
+        )
+
+     cy.xpath('/html/body/nav/div/div/ul[1]/li[3]/a').click();
+     cy.xpath('/html/body/nav/div/div/ul[1]/li/a').click();
+     cy.get('#login-sign-in').type(`User_${numeroAleatorio}`);
+     cy.get('#password-sign-in').type('testArrop');
+     cy.get('#btn-submit-sign-in').click();
   })
-
-  it('Realizar login informando crendenciais incorrectas', () => {
-    // Arrange
-    cy.visit('https://www.saucedemo.com/')
-
-    // Act
-    cy.get('[data-test="username"]').type('invalid_user');
-    cy.get('[data-test="password"]').type('test00000');
-    cy.get('[data-test="login-button"]').click();
-
-    cy.get('[data-test="error"]')
-      .should(
-        "contain.text",
-        "Epic sadface: Username and password do not match any user in this service"
-      )
-
-    // Assert
-    cy.url().should('eq', 'https://www.saucedemo.com/');
- })
 })
