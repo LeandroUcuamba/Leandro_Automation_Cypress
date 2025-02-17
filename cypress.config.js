@@ -18,6 +18,7 @@ module.exports = defineConfig({
     },
     chromeWebSecurity: false,
     e2e: {
+      baseUrl: 'http://www.juliodelima.com.br/taskit/',
        setupNodeEvents(on, config) {
           require('cypress-mochawesome-reporter/plugin')(on);
        },

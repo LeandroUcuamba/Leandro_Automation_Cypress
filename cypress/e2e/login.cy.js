@@ -5,7 +5,7 @@ require('cypress-xpath');
 describe('Login', () => {
 
   beforeEach(() => {
-    cy.visit('http://www.juliodelima.com.br/taskit/');
+    cy.visit('/');
   });
 
   const nomeAleatorio = Math.random().toString(36).substring(2, 9);
