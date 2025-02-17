@@ -1,11 +1,17 @@
 const { defineConfig } = require("cypress");
 const baseConfig = require('./cypress.config');
+const dotenv = require("dotenv");
+const path = require("path");
+
+dotenv.config({
+   path: path.resolve(__dirname, './.env.qa')
+})
 
 const e2e = {
-    baseUrl: 'http://www.qa.leandroucuamba.com.br/taskit/',
+    baseUrl: process.env.BASE_URL,
     env: {
-        username: 'QA_Leandro',
-        password: 'QA_Secret'
+        username: process.env.USER,
+        password: process.env.PASSWORD
     }
 }
 

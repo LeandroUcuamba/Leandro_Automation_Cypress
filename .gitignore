@@ -1,2 +1,25 @@
 /node_modules
 package-lock.json
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+
+# cypress
+cypress/downloads
+cypress/screenshots
+cypress/videos
+cypress/reports
+cypress/snapshots/**/diffs
+cypress/reports/junit/*
+cucumber-message.ndjson
+cucumber-report.html
+
+#env
+.env.dev
+.env.qa
