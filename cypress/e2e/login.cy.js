@@ -25,7 +25,7 @@ describe('Login', () => {
             "You are now registered and can add tasks you want to do in the distant future."
         )
   })
-  it('Login test with wrong "user" in the credentials.', () => {
+  it('Login test with wrong "user"', () => {
 
     cy.get('nav a').contains('Sign in').click();
     cy.get('#login-sign-in').type("wrong_user");
@@ -34,7 +34,7 @@ describe('Login', () => {
     cy.get('#toast-container').should('be.visible');
     cy.get('#toast-container').should('contain.text', 'Maybe you brain dropped the password or login in some place!');
   })
-  it('Login test with wrong "password" in the credentials.', () => {
+  it('Login test with wrong "password"', () => {
     
     cy.get('nav a').contains('Sign in').click();
     cy.get('#login-sign-in').type("User_");
